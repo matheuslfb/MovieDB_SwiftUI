@@ -47,8 +47,7 @@ struct MovieListView: View {
     var list: some View {
         List {
             ForEach(popularMovies, id: \.self) { movie in
-//                MovieCell(title: movie.title, overview: movie.overview, vote_average: movie.vote_average.cleanValue, poster_path: movie.poster_path)
-                NavigationLink(destination: MovieDetailView(title: movie.title)) {
+                NavigationLink(destination: MovieDetailView(title: movie.title, vote_average: movie.vote_average.cleanValue, poster_path: movie.poster_path)) {
                     MovieCell(title: movie.title, overview: movie.overview, vote_average: movie.vote_average.cleanValue, poster_path: movie.poster_path)
                 }
             }
