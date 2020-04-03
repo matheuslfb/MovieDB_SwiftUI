@@ -9,24 +9,28 @@
 import SwiftUI
 
 struct MovieListView: View {
-    //    let movies = ["Matheus", "Luisa", "Ronald", "Nico", "JOao", "Dani", "÷
-    @State private var searchText : String = ""
+    
+    @State var searchText : String = ""
     
     @State var popularMovies: [Movie] = []
     @State var nowPlayingMovies: [Movie] = []
     
     @State var image: UIImage = UIImage()
     
+
+    
     var body: some View {
+        
         NavigationView{
-            
             VStack{
                 SearchBar(text: $searchText, placeholder: "Search for a movie")
+                
                 list
-                .navigationBarTitle("Movies")
+                    .navigationBarTitle("Movies", displayMode: .large)
+            }
             }
             
-        }.onAppear{
+        .onAppear{
             print("view appeared")
         
             NetworkService.sharedInstance.fetchMovies(with: .POPULAR, completion: { result in
@@ -34,22 +38,25 @@ struct MovieListView: View {
                 case .success(let movies):
                     DispatchQueue.main.async {
                         self.popularMovies = movies
-                        print(self.popularMovies.count)
                     }
                 case .failure(_):
                     print("fail to show movies in the view∫")
                 }
         
             });
+            
+            UITableView.appearance().separatorStyle = .none
         }
     }
     
     var list: some View {
         List {
-            ForEach(popularMovies, id: \.self) { movie in
+                ForEach(popularMovies.filter {
+                    self.searchText.isEmpty ? true : $0.title.lowercased().contains(self.searchText.lowercased())
+                }, id: \.self) { movie in
                 NavigationLink(destination: MovieDetailView(title: movie.title, vote_average: movie.vote_average.cleanValue, poster_path: movie.poster_path)) {
                     MovieCell(title: movie.title, overview: movie.overview, vote_average: movie.vote_average.cleanValue, poster_path: movie.poster_path)
-                }
+                    }
             }
             
         }
