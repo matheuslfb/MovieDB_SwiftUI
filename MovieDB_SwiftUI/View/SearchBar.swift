@@ -10,38 +10,32 @@ import SwiftUI
 
 struct SearchBar: UIViewRepresentable {
     
-    
-
     @Binding var text: String
     var placeholder: String
     
     class Coordinator: NSObject, UISearchBarDelegate {
-
+        
         @Binding var text: String
-
+        
         init(text: Binding<String>) {
             _text = text
         }
-
+        
         func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
             text = searchText
         }
-     
-         func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
             searchBar.text = ""
-               searchBar.resignFirstResponder()
-               searchBar.endEditing(true)
-           }
-        
-        
-        
+            searchBar.resignFirstResponder()
+            searchBar.endEditing(true)
+        }
     }
-
+    
     func makeCoordinator() -> SearchBar.Coordinator {
         return Coordinator(text: $text)
     }
     
-   
     func makeUIView(context: UIViewRepresentableContext<SearchBar>) -> UISearchBar {
         let searchBar = UISearchBar(frame: .zero)
         searchBar.delegate = context.coordinator
@@ -49,21 +43,10 @@ struct SearchBar: UIViewRepresentable {
         searchBar.placeholder = placeholder
         searchBar.autocapitalizationType = .none
         searchBar.showsCancelButton = true
-
+        
         return searchBar
     }
     
-//    func makeUIView(context: UIViewRepresentableContext<UISearchController>) -> UISearchController {
-//        let searchController = UISearchController(searchResultsController: nil)
-//        searchController.delegate = context.coordinator as! UISearchControllerDelegate
-//        searchController.searchBar.searchBarStyle = .minimal
-//        searchController.searchBar.placeholder = placeholder
-//        searchController.searchBar.autocapitalizationType = .none
-//        searchController.searchBar.showsCancelButton = true
-//
-//        return searchController
-//    }
-
     func updateUIView(_ uiView: UISearchBar, context: UIViewRepresentableContext<SearchBar>) {
         uiView.text = text
     }

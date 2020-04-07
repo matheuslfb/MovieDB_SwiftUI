@@ -15,14 +15,6 @@ struct MovieCell: View {
     var poster_path: String = ""
     @State var image: UIImage = UIImage()
     
-    
-    init(title: String, overview: String, vote_average: String, poster_path: String) {
-        self.title = title
-        self.overview = overview
-        self.vote_average = vote_average
-        self.poster_path = poster_path
-    }
-    
     var body: some View {
         
         HStack {

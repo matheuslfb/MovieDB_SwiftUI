@@ -18,6 +18,7 @@
 		8AA64D9B243381D5003387C3 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA64D9A243381D5003387C3 /* Movie.swift */; };
 		8AA64D9E24338A70003387C3 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA64D9D24338A70003387C3 /* SearchBar.swift */; };
 		8AA64DA22433A95D003387C3 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA64DA12433A95D003387C3 /* DetailView.swift */; };
+		8AF39191243BBB5900EE65C2 /* NowPlayingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF39190243BBB5900EE65C2 /* NowPlayingCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		8AA64D9A243381D5003387C3 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		8AA64D9D24338A70003387C3 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		8AA64DA12433A95D003387C3 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		8AF39190243BBB5900EE65C2 /* NowPlayingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				8AA64D89243380D4003387C3 /* ContentView.swift */,
 				8AA64DA12433A95D003387C3 /* DetailView.swift */,
 				8A9D019C24366B62003DF00B /* MovieCell.swift */,
+				8AF39190243BBB5900EE65C2 /* NowPlayingCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				8AA64DA22433A95D003387C3 /* DetailView.swift in Sources */,
 				8A9D019D24366B62003DF00B /* MovieCell.swift in Sources */,
 				8A866BCF2434FB4F007419AA /* NetworkService.swift in Sources */,
+				8AF39191243BBB5900EE65C2 /* NowPlayingCell.swift in Sources */,
 				8AA64D88243380D4003387C3 /* SceneDelegate.swift in Sources */,
 				8AA64D9E24338A70003387C3 /* SearchBar.swift in Sources */,
 				8AA64D9B243381D5003387C3 /* Movie.swift in Sources */,

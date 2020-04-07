@@ -6,18 +6,15 @@
 //  Copyright © 2020 Matheus Lima Ferreira. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
 struct Movie: Codable, Hashable  {
     
-//    var _id = UUID()
     
     var id: Int
     var title: String
     var overview: String
-//    var genres: String
     var vote_average: Double
     var poster_path: String
-//    var poster: NSData
-    
+
 }
