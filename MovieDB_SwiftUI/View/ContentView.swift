@@ -8,16 +8,21 @@
 
 import SwiftUI
 
+
+class MoviesObject: ObservableObject {
+    @Published var popularMovies: [Movie] = []
+    @Published var nowPlayingMovies: [Movie] = []
+}
+
+
 struct MovieListView: View {
     
     @State var searchText : String = ""
     
-    @State var popularMovies: [Movie] = []
-    @State var nowPlayingMovies: [Movie] = []
-    
     @State var image: UIImage = UIImage()
     
-    
+    @EnvironmentObject var moviesObject: MoviesObject
+    @State var showingAllPopularMovies = false
     
     var body: some View {
         
@@ -28,7 +33,6 @@ struct MovieListView: View {
                     SearchBar(text: $searchText, placeholder: "Search for a movie")
                 }
                 VStack {
-                    
                     list
                 }
             }
@@ -42,7 +46,7 @@ struct MovieListView: View {
                 switch result {
                 case .success(let movies):
                     DispatchQueue.main.async {
-                        self.popularMovies = movies
+                        self.moviesObject.popularMovies = movies
                     }
                 case .failure(_):
                     print("fail to show movies in the view∫")
@@ -54,8 +58,7 @@ struct MovieListView: View {
                 switch result {
                 case .success(let movies):
                     DispatchQueue.main.async {
-                        self.nowPlayingMovies = movies
-                        print(self.nowPlayingMovies.count)
+                        self.moviesObject.nowPlayingMovies = movies
                     }
                 case .failure(_):
                     print("fail to show now playing movies in the view∫")
@@ -76,19 +79,26 @@ struct MovieListView: View {
                     .padding(.leading, 8)
                 
                 Spacer()
-                Button("See all") {
-                    
-                }.padding(.trailing)
-                    .foregroundColor(Color.primary)
+                
+                Button(action: {
+                    self.showingAllPopularMovies.toggle()
+                }) {
+                    Text("See all")
+                    }.popover(isPresented: $showingAllPopularMovies) {
+                        SeeAllNowPlayingView().environmentObject(self.moviesObject)
+                }.foregroundColor(Color.primary)
+                
             }
+            
+            
+            
             
             ScrollView(.horizontal){
                 HStack {
-                    ForEach (nowPlayingMovies, id: \.self) { movie in
+                    ForEach (moviesObject.nowPlayingMovies, id: \.self) { movie in
                         NavigationLink(destination: MovieDetailView(title: movie.title, overview: movie.overview, vote_average: movie.vote_average.cleanValue, poster_path: movie.poster_path)) {
                             
                             NowPlayingCell(title: movie.title, overview: movie.overview, vote_average: movie.vote_average.cleanValue, poster_path: movie.poster_path)
-                            
                         }
                     }
                 }
@@ -102,7 +112,7 @@ struct MovieListView: View {
             Text("Popular Movies")
                 .font(.headline)
                 .padding(.leading, 0)
-            ForEach(popularMovies.filter {
+            ForEach(moviesObject.popularMovies.filter {
                 self.searchText.isEmpty ? true : $0.title.lowercased().contains(self.searchText.lowercased())
             }, id: \.self) { movie in
                 NavigationLink(destination: MovieDetailView(title: movie.title, overview: movie.overview, vote_average: movie.vote_average.cleanValue, poster_path: movie.poster_path)) {
@@ -117,7 +127,7 @@ struct MovieListView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieListView()
+        MovieListView().environmentObject(MoviesObject())
     }
 }
 
