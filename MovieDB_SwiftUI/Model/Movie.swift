@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct Movie: Codable, Hashable  {
+struct Movie: Codable, Hashable, Identifiable  {
     
     
     var id: Int
@@ -17,4 +17,9 @@ struct Movie: Codable, Hashable  {
     var vote_average: Double
     var poster_path: String
 
+}
+
+struct Row: Identifiable {
+    let id = UUID()
+    let cells: [Movie]
 }

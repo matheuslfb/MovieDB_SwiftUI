@@ -9,14 +9,10 @@
 import SwiftUI
 
 struct NowPlayingCell: View {
-    
-    var title: String = ""
-    var overview: String = ""
-    var vote_average: String = ""
-    var poster_path: String = ""
     @State var image: UIImage = UIImage()
     @State var isFavorite =  false
     
+    var cellContent:  Movie
     
     var body: some View {
         VStack(alignment: .leading){
@@ -26,7 +22,7 @@ struct NowPlayingCell: View {
                 .cornerRadius(10)
             
             
-            Text(title)
+            Text(cellContent.title)
                 .multilineTextAlignment(.leading)
                 .frame(width: 128)
                 .lineLimit(1)
@@ -35,7 +31,7 @@ struct NowPlayingCell: View {
             HStack(spacing: 5) {
                 Image(systemName: isFavorite ? "star.fill" : "star").renderingMode(.original)
                     .frame(width: 16, height: 16)
-                Text(vote_average)
+                Text(cellContent.vote_average.cleanValue)
                     .foregroundColor(Color.gray)
                     .multilineTextAlignment(.leading)
             }
@@ -43,7 +39,7 @@ struct NowPlayingCell: View {
         }.padding(.leading, 8)
             .onAppear {
                 
-                NetworkService.sharedInstance.fetchImageFromUrl(poster_path: self.poster_path) { imageResult in
+                NetworkService.sharedInstance.fetchImageFromUrl(poster_path: self.cellContent.poster_path) { imageResult in
                     DispatchQueue.main.async {
                         self.image = imageResult
                     }

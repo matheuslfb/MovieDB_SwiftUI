@@ -98,7 +98,7 @@ struct MovieListView: View {
                     ForEach (moviesObject.nowPlayingMovies, id: \.self) { movie in
                         NavigationLink(destination: MovieDetailView(title: movie.title, overview: movie.overview, vote_average: movie.vote_average.cleanValue, poster_path: movie.poster_path)) {
                             
-                            NowPlayingCell(title: movie.title, overview: movie.overview, vote_average: movie.vote_average.cleanValue, poster_path: movie.poster_path)
+                            NowPlayingCell(cellContent: movie)
                         }
                     }
                 }
@@ -116,7 +116,7 @@ struct MovieListView: View {
                 self.searchText.isEmpty ? true : $0.title.lowercased().contains(self.searchText.lowercased())
             }, id: \.self) { movie in
                 NavigationLink(destination: MovieDetailView(title: movie.title, overview: movie.overview, vote_average: movie.vote_average.cleanValue, poster_path: movie.poster_path)) {
-                    MovieCell(title: movie.title, overview: movie.overview, vote_average: movie.vote_average.cleanValue, poster_path: movie.poster_path)
+                    PopularMovieCell(cellContent: movie)
                 }
             }
             

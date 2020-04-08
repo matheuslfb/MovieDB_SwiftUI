@@ -8,11 +8,8 @@
 
 import SwiftUI
 
-struct MovieCell: View {
-    var title: String = ""
-    var overview: String = ""
-    var vote_average: String = ""
-    var poster_path: String = ""
+struct PopularMovieCell: View {
+    var cellContent:  Movie
     @State var image: UIImage = UIImage()
     
     var body: some View {
@@ -25,12 +22,12 @@ struct MovieCell: View {
             
             VStack(alignment: .leading){
                 
-                Text(title)
+                Text(cellContent.title)
                     .font(.title)
                     .padding(CGFloat(5.0))
                     .lineLimit(1)
                 
-                Text(overview)
+                Text(cellContent.overview)
                     .fontWeight(.thin)
                     .multilineTextAlignment(.leading)
                     .lineLimit(3)
@@ -39,7 +36,7 @@ struct MovieCell: View {
                 
                 HStack {
                     Image(systemName: "star")
-                    Text(vote_average)
+                    Text(cellContent.vote_average.cleanValue)
                         .frame(width: 40)
                         .multilineTextAlignment(.leading)
                 }
@@ -47,7 +44,7 @@ struct MovieCell: View {
             }
         }.onAppear {
             
-            NetworkService.sharedInstance.fetchImageFromUrl(poster_path: self.poster_path) { imageResult in
+            NetworkService.sharedInstance.fetchImageFromUrl(poster_path: self.cellContent.poster_path) { imageResult in
                 DispatchQueue.main.async {
                     self.image = imageResult
                 }
