@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-
+import Introspect
 
 class MoviesObject: ObservableObject {
     @Published var popularMovies: [Movie] = []
@@ -30,7 +30,8 @@ struct MovieListView: View {
             
             VStack {
                 Group {
-                    SearchBar(text: $searchText, placeholder: "Search for a movie")
+                    // Search
+                    SearchBarView(searchText: $searchText)
                 }
                 VStack {
                     list
@@ -64,7 +65,7 @@ struct MovieListView: View {
                     print("fail to show now playing movies in the view∫")
                 }
             });
-            UITableView.appearance().separatorStyle = .none
+            //            UITableView.appearance().separatorStyle = .none
         }
     }
     
@@ -84,14 +85,11 @@ struct MovieListView: View {
                     self.showingAllPopularMovies.toggle()
                 }) {
                     Text("See all")
-                    }.popover(isPresented: $showingAllPopularMovies) {
-                        SeeAllNowPlayingView().environmentObject(self.moviesObject)
+                }.popover(isPresented: $showingAllPopularMovies) {
+                    SeeAllNowPlayingView().environmentObject(self.moviesObject)
                 }.foregroundColor(Color.primary)
                 
             }
-            
-            
-            
             
             ScrollView(.horizontal){
                 HStack {
@@ -118,11 +116,17 @@ struct MovieListView: View {
                 NavigationLink(destination: MovieDetailView(title: movie.title, overview: movie.overview, vote_average: movie.vote_average.cleanValue, poster_path: movie.poster_path)) {
                     PopularMovieCell(cellContent: movie)
                 }
+                
             }
             
+        }.introspectTableView { (tableView) in
+            tableView.separatorStyle = .none
+            
         }
+        
     }
 }
+
 
 
 struct ContentView_Previews: PreviewProvider {
