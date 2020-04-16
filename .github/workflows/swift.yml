@@ -2,20 +2,22 @@ name: Swift-teste
 
 on:
   push:
+    branches: [ master ]
+ 
+
+jobs:
+  test:
     name: Test
-    jobs:
-      test:
-        name: Test
-        runs-on: macOS-latest
-        strategy:
-            matrix:
-              destination: ['platform=iOS Simulator,OS=13.3,name=iPhone 11']
-        steps:
-          - name: Checkout
-            uses: actions/checkout@master
-          - name: Build and test
-            run: |
-              cd Texstyle
-              xcodebuild clean test -project Texstyle.xcodeproj -scheme Texstyle -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
-            env: 
-            destination: ${{ matrix.destination }}
+    runs-on: macOS-latest
+    strategy:
+        matrix:
+          destination: ['platform=iOS Simulator,OS=13.3,name=iPhone 11', 'platform=tvOS Simulator,OS=13.3,name=Apple TV 4K']
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Build and test
+        run: |
+          cd Texstyle
+          xcodebuild clean test -project Texstyle.xcodeproj -scheme Texstyle -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+        env: 
+         destination: ${{ matrix.destination }}
