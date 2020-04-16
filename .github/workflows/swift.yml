@@ -17,7 +17,6 @@ jobs:
         uses: actions/checkout@master
       - name: Build and test
         run: |
-          cd MovieDB_SwiftUI
           ls
           xcodebuild clean test -project MovieDB_SwiftUI.xcworkspace -scheme MovieDB_SwiftUI -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
         env: 
