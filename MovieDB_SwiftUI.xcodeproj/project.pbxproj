@@ -471,7 +471,7 @@
 				8AA64D95243380D7003387C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		8AA64D96243380D7003387C3 /* Build configuration list for PBXNativeTarget "MovieDB_SwiftUI" */ = {
 			isa = XCConfigurationList;
@@ -480,7 +480,7 @@
 				8AA64D98243380D7003387C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 

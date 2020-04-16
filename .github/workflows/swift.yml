@@ -18,6 +18,6 @@ jobs:
       - name: Build and test
         run: |
           ls
-          xcodebuild clean test -project MovieDB_SwiftUI.xcworkspace -scheme MovieDB_SwiftUI -destination "${destination}" CODE_SIGN_IDENTITY="2c286aae-a457-4b82-b1c3-33d9c4d79981" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+          xcodebuild clean test -project MovieDB_SwiftUI.xcodeproj -scheme MovieDB_SwiftUI -destination "${destination}" CODE_SIGN_IDENTITY="2c286aae-a457-4b82-b1c3-33d9c4d79981" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
         env: 
          destination: ${{ matrix.destination }}
