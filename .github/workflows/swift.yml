@@ -1,0 +1,29 @@
+
+name: Swift
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  
+jobs:
+  build:
+  
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: codecov/codecov-action@v1.0.6
+      language: swift # or objective-c
+      osx_image: xcode7
+      script:
+        - xcodebuild -scheme SwiftExample -workspace SwiftExample.xcworkspace -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6S,OS=9.1' build test
+      after_success:
+        - bash <(curl -s https://codecov.io/bash)
+    - name: Build
+      run: swift build -v
+    - name: Run tests
+      run: swift test -v
+
