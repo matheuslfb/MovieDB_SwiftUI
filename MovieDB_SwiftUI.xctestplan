@@ -1,0 +1,23 @@
+{
+  "configurations" : [
+    {
+      "id" : "7C49E4C8-3897-434E-BF79-BFD6310E0AA4",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:MovieDB_SwiftUI.xcodeproj",
+      "identifier" : "8AA64D81243380D4003387C3",
+      "name" : "MovieDB_SwiftUI"
+    }
+  },
+  "testTargets" : [
+
+  ],
+  "version" : 1
+}

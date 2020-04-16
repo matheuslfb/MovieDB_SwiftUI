@@ -42,6 +42,7 @@
 		8AA64D9A243381D5003387C3 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		8AA64D9D24338A70003387C3 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		8AA64DA12433A95D003387C3 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
+		8AB12B4B2448C68E00432FC8 /* MovieDB_SwiftUI.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MovieDB_SwiftUI.xctestplan; sourceTree = "<group>"; };
 		8AF39190243BBB5900EE65C2 /* NowPlayingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingCell.swift; sourceTree = "<group>"; };
 		A1A48C22C3A43F1A89732EB1 /* Pods-MovieDB_SwiftUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDB_SwiftUI.debug.xcconfig"; path = "Target Support Files/Pods-MovieDB_SwiftUI/Pods-MovieDB_SwiftUI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +80,7 @@
 		8AA64D79243380D4003387C3 = {
 			isa = PBXGroup;
 			children = (
+				8AB12B4B2448C68E00432FC8 /* MovieDB_SwiftUI.xctestplan */,
 				8AA64D84243380D4003387C3 /* MovieDB_SwiftUI */,
 				8AA64D83243380D4003387C3 /* Products */,
 				BD559C910FE87744407D332D /* Pods */,
@@ -307,7 +309,6 @@
 /* Begin XCBuildConfiguration section */
 		8AA64D94243380D7003387C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A1A48C22C3A43F1A89732EB1 /* Pods-MovieDB_SwiftUI.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -368,7 +369,6 @@
 		};
 		8AA64D95243380D7003387C3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 62DF3B61F73CDAC3AACD2236 /* Pods-MovieDB_SwiftUI.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
