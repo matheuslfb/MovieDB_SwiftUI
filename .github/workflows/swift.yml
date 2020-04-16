@@ -2,20 +2,20 @@ name: Swift-teste
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
-jobs:
-  codev:
-    runs-on: macos-latest
-    steps:       
-      - name: Codecov
-        uses: codecov/codecov-action@v1.0.6
-          language:
-            - swift
-          osx_image: xcode10.1
-          script:
-            - xcodebuild -scheme SwiftExample -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone X,OS=12.1' build test
-          after_success:
-            - bash <(curl -s https://codecov.io/bash)
+    name: Test
+    jobs:
+      test:
+        name: Test
+        runs-on: macOS-latest
+        strategy:
+            matrix:
+              destination: ['platform=iOS Simulator,OS=13.3,name=iPhone 11']
+        steps:
+          - name: Checkout
+            uses: actions/checkout@master
+          - name: Build and test
+            run: |
+              cd Texstyle
+              xcodebuild clean test -project Texstyle.xcodeproj -scheme Texstyle -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+            env: 
+            destination: ${{ matrix.destination }}
