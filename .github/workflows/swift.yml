@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
@@ -18,7 +17,7 @@ jobs:
       run: swift test -v
   
   codev:
-    steps: 
-      runs-on: macos-latest
+    runs-on: macos-latest
+    steps:       
       - name: Codecov
       - uses: codecov/codecov-action@v1.0.6
