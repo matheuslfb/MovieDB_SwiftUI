@@ -1,4 +1,4 @@
-name: Swift
+name: Swift-teste
 
 on:
   push:
@@ -10,13 +10,14 @@ jobs:
   build:
 
     runs-on: macos-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Build
       run: swift build -v
     - name: Run tests
       run: swift test -v
-    - name: Codecov
-    - uses: codecov/codecov-action@v1.0.6
-   
+  
+  codev:
+    steps: 
+      - name: Codecov
+        uses: codecov/codecov-action@v1.0.6
