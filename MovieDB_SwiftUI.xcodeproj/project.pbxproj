@@ -307,6 +307,7 @@
 /* Begin XCBuildConfiguration section */
 		8AA64D94243380D7003387C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1A48C22C3A43F1A89732EB1 /* Pods-MovieDB_SwiftUI.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -367,6 +368,7 @@
 		};
 		8AA64D95243380D7003387C3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62DF3B61F73CDAC3AACD2236 /* Pods-MovieDB_SwiftUI.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
