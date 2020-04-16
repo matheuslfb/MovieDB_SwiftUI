@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@master
       - name: Build and test
         run: |
-          cd Texstyle
-          xcodebuild clean test -project Texstyle.xcodeproj -scheme Texstyle -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+          cd MovieDB_SwiftUI
+          xcodebuild clean test -project MovieDB_SwiftUI.xcodeproj -scheme MovieDB_SwiftUI -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
         env: 
          destination: ${{ matrix.destination }}
