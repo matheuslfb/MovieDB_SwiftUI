@@ -19,6 +19,7 @@ jobs:
   
   codev:
     steps: 
+      runs-on: macos-latest
       - name: Codecov
-        runs-on: macos-latest
+        
         uses: codecov/codecov-action@v1.0.6
